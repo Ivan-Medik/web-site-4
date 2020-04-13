@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Chats
+{% endblock %}
+
+{% block content %}
+  <h1>Chats</h1>
+  {% for key, value in href_chat.items %}
+	 <div class="alert alert-primary" role="alert" style="font-size: 20px;">
+  		Chat this - <a href="/blog/message/{{ key }}">{{ value }}</a><br>
+  	</div>
+  {% endfor %}
+{% endblock %}

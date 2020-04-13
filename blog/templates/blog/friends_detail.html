@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  friends
+{% endblock %}
+
+{% block content %}
+	<h1>My friends:</h1>
+	{% for key, value in friends_list.items %}
+		<div class="alert alert-primary" role="alert" style="font-size: 20px;">
+	  		<a href="/blog/profile/id{{ value }}/">{{ key }}</a><br>
+	  	</div>
+	{% endfor %}
+{% endblock %}

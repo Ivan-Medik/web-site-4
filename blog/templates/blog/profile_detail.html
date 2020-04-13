@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Profile
+{% endblock %}
+
+{% block content %}
+  {% for user_name in name_user %}
+    <h1>{{ user_name }}{% if my_acc %} - Это я =){% endif %}</h1>
+  {% endfor %}
+  <h4>Status - {{ profile.status }}</h4>
+  <h2>My id - {{ user_id }}</h2><br>
+  {% if my_acc %}
+    <button type="button" class="btn btn-outline-dark"><a href="/blog/message/">Сообщения</a></button>
+    <button type="button" class="btn btn-outline-dark"><a href="/blog/friends_{{ user_id }}/">Друзья - {{ len_friends }}</a></button>
+  {% else %}
+    {% if len_friends > 0 %}
+      <button type="button" class="btn btn-outline-dark a"><a href="/blog/message/{{ message_token }}/">Написать</a></button>
+      <button type="button" class="btn btn-outline-dark v">{% if in_friend %}<a href="/blog/profile/id{{ user_id }}/">В друзьях</a>{% else %}<a href="/blog/friend_add{{ user_id }}/">Добавить в друзья{% endif %}</a></button>
+    {% else %}
+      {% if my_profile == friend_id_check %}
+          <button type="button" class="btn btn-outline-dark y"><a href="/blog/message/{{ message_token }}/">Написать</a></button>
+          <button type="button" class="btn btn-outline-dark u"><a href="/blog/profile/id{{ user_id }}/">В друзьях</a></button>
+        {% else %}
+          <button type="button" class="btn btn-outline-dark o"><a href="/blog/message/{{ message_token }}/">Написать</a></button>
+          <button type="button" class="btn btn-outline-dark i"><a href="/blog/friend_add{{ user_id }}/">Добавить в друзья</a></button>
+        {% endif %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
